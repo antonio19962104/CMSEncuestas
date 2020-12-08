@@ -1,1 +1,43 @@
 <p>add-encuesta works!</p>
+<form #frmAdd = "ngForm" (ngSubmit) = "addEncuesta(frmAdd.value)">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label">Nombre:</label>
+            <div class="col-12">
+                <input required #nombre="ngModel" ngModel name="nombre" type="text" class="form-control" value="">
+                <span class="validation" *ngIf="nombre.touched && nombre.errors?.required" style="color:red">sdd</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">UID:</label>
+            <div class="col-12">
+                <input required #uid="ngModel" ngModel name="uid" type="text" class="form-control" value="">
+                <span class="validation" *ngIf="uid.touched && uid.errors?.required" style="color:red">El campo es requerido</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">BD</label>
+            <div class="col-12">
+                <input required #BD="ngModel" ngModel name="idBaseDeDatos" type="text" class="form-control" value="">
+                <span class="validation" *ngIf="BD.touched && BD.errors?.required" style="color:red">El campo es requerido</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Fecha inicio</label>
+            <div class="col-12">
+                <input required #inicio="ngModel" ngModel name="fechaInicio" type="date" class="form-control" value="">
+                <span class="validation" *ngIf="inicio.touched && inicio.errors?.required" style="color:red"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Fecha fin</label>
+            <div class="col-12">
+                <input required #fin="ngModel" ngModel name="fechaFin" type="date" class="form-control" value="">
+                <span class="validation" *ngIf="fin.touched && fin.errors?.required" style="color:red"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-offset-2">
+        <input type="submit" class="btn btn-success" value="Enviar">
+    </div>
+</form>

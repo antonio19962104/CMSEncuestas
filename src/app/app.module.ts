@@ -20,6 +20,7 @@ import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
 import { DialogModule, DialogsModule } from '@progress/kendo-angular-dialog';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
     PDFExportModule,
     DialogModule,
     LabelModule,
-    DialogsModule
+    DialogsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

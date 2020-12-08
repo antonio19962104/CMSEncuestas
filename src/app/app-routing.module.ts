@@ -16,7 +16,7 @@ const routes: Routes = [
     component: GetAllEncuestaComponent,
   },
   {
-    path: 'detailEncuesta',
+    path: 'detailEncuesta/:id',
     component: DetailEncuestaComponent
   },
   {

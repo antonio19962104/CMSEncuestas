@@ -21,7 +21,8 @@ export class DataService {
   }
 
   addEncuesta(data: Encuesta) {
-    return this.http.post('http://localhost:40614/api/Encuesta/'+ data.idEncuesta, data);
+    return this.http.post('http://localhost:40614/api/Encuesta', data);
+      // .pipe(map((response: Encuesta) => response));
   }
 
   updateEncuesta(data: Encuesta) {

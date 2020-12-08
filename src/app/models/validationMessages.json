@@ -1,0 +1,13 @@
+{
+  "type":{
+    "required":{
+      "message": "Campo requerido"
+    },
+    "minLenght":{
+      "message": "La longitud minima del campo es {0} caracteres"
+    },
+    "maxLenght":{
+      "message": "La longitud máxima del campo es {0} caracteres"
+    }
+  }
+}

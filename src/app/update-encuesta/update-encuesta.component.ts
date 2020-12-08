@@ -15,7 +15,7 @@ export class UpdateEncuestaComponent implements OnInit {
   constructor(private data: DataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.param1 = this.route.snapshot.paramMap.get("id")
+    this.param1 = this.route.snapshot.paramMap.get("id");
     this.data.getByIdEncuesta(this.param1).subscribe(
       data => this.encuestas = data
     );
