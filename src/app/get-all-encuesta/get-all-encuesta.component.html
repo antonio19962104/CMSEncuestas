@@ -1,0 +1,77 @@
+<h3>
+    Encuestas creadas
+</h3>
+<div class="card-container" hidden>
+    <table id="myTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">Id</th>
+                <th class="text-center" scope="col">Nombre</th>
+                <th class="text-center" scope="col">Base de Datos</th>
+                <th class="text-center" scope="col">Fecha inicio</th>
+                <th class="text-center" scope="col">Fecha fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listEncuestas$">
+                <td class="text-center"> {{ item.idEncuesta }} </td>
+                <td class="text-center"> {{ item.nombre }} </td>
+                <td class="text-center"> {{ item.idBasesDeDatos }} </td>
+                <td class="text-center"> {{ item.fechaInicio }} </td>
+                <td class="text-center"> {{ item.fechaFin }} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card-container" id="grid">
+    <app-grid-encuestas></app-grid-encuestas>
+</div>
+<!-- <script>
+    $(document).ready(function () {
+        var dataEncuesta = listEncuestas$;
+        $("#grid").kendoGrid({
+            dataSource: {
+                data: dataEncuesta,
+                schema: {
+                    model: {
+                        id: "idEncuesta",
+                        fields: {
+                            idEncuesta: {
+                                editable: false
+                            },
+                            nombre: {
+                                type: "string",
+                                editable: true,
+                            },
+                            idBasesDeDatos: {
+                                type: "number"
+                            },
+                            fechaInicio: {
+                                type: "string"
+                            },
+                            fechaFin:{
+                                type: "string"
+                            }
+                        },
+                    }
+                },
+                pageSize: 10
+            },
+            sortable: true,
+            filterable: true,
+            toolbar: ["search", "excel", "pdf"],
+            sortable: true, 
+            filterable: true,
+            pageable: true,
+            columns: [
+                { field: "idEncuesta", title: "IdEncuesta", editable: false },
+                { field: "nombre", title: "Nombre" },
+                { field: "idBasesDeDatos", title: "Base de Datos" },
+                { field: "fechaInicio", title: "Inicio" },
+                { field: "fechaFin", title: "Fin" },
+                { command: ["destroy"], title: "&nbsp;" }
+            ],
+            editable: "incell"
+        });
+    });
+</script> -->

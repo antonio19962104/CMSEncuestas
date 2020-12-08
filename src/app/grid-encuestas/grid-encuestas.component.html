@@ -1,0 +1,46 @@
+<p>grid-encuestas works!</p>
+<kendo-grid [kendoGridBinding]="gridData" [height]="400" [columnMenu]="{ filter: true }" [sortable]="true"
+[groupable]="true"
+[loading]=""
+[filterable]="true"
+[pageSize]="10"
+kendoGridSelectBy="idEncuesta"
+[pageable]="{
+    buttonCount: '',
+    info: 'info',
+    type: 'tipo',
+    pageSizes: [5, 10, 20],
+    previousNext: 'button'
+}">
+
+        <ng-template kendoGridToolbarTemplate>
+            <button kendoGridExcelCommand type="button" icon="file-excel" style="float:right;">Export to Excel</button>
+            <button kendoGridPDFCommand icon="file-pdf" style="float:right;">Export to PDF</button>
+            <a routerLink="/addEncuesta"><button kendoGridAddCommand icon="k-icon k-i-plus-outline" class="k-button" style="float:right;">Agregar</button></a>
+        </ng-template>
+        <kendo-grid-excel></kendo-grid-excel>
+        <kendo-grid-pdf></kendo-grid-pdf>
+        <kendo-grid-column field="idEncuesta" title="Encuesta ID">
+                <!-- <ng-template kendoGridCellTemplate let-dataItem>
+                    <div class="customer-photo"
+                        [ngStyle]="{ backgroundImage: getUrl(dataItem.idEncuesta) }">
+                    </div>
+                    <div class="customer-name">
+                        {{ dataItem.nombre }}
+                    </div>
+                </ng-template> -->
+        </kendo-grid-column>
+        <kendo-grid-column field="nombre" title="Nombre"></kendo-grid-column>
+        <kendo-grid-column field="idBasesDeDatos" title="Base de Datos"></kendo-grid-column>
+        <kendo-grid-column field="fechaInicio" title="Fecha de Inicio"></kendo-grid-column>
+        <kendo-grid-column field="fechaFin" title="Fecha de Finalización"></kendo-grid-column>
+        <kendo-grid-command-column field="idEncuesta" title="command" width="220">
+            <ng-template kendoGridCellTemplate let-data="dataItem">
+                <!-- <button kendoGridEditCommand [primary]="true">Edit</button> -->
+                <button (click)="delete(data.idEncuesta)" kendoGridRemoveCommand>Eliminar</button>
+                <button (click)="update(data.idEncuesta)" kendoGridRemoveCommand>Editar</button>
+                <!-- <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button> -->
+                <!-- <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button> -->
+            </ng-template>
+        </kendo-grid-command-column>
+</kendo-grid>

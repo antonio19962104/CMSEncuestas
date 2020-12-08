@@ -1,0 +1,38 @@
+<p>update-encuesta works!</p>
+<form>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label">Nombre:</label>
+            <div class="col-12">
+                <input type="text" class="form-control" value="{{ encuestas.nombre }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">UID:</label>
+            <div class="col-12">
+                <input type="text" class="form-control" value="{{ encuestas.uid }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">BD</label>
+            <div class="col-12">
+                <input type="text" class="form-control" value="{{ encuestas.idBaseDeDatos }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Fecha inicio</label>
+            <div class="col-12">
+                <input type="datetime" class="form-control" value="{{ encuestas.fechaInicio }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Fecha fin</label>
+            <div class="col-12">
+                <input type="datetime" class="form-control" value="{{ encuestas.fechaFin }}">
+            </div>
+        </div>
+    </div>
+    <div class="col-offset-2">
+        <input type="submit" class="btn btn-success" value="Enviar">
+    </div>
+</form>
