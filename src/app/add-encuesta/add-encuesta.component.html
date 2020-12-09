@@ -5,13 +5,13 @@
             <label class="control-label">Nombre:</label>
             <div class="col-12">
                 <input required #nombre="ngModel" ngModel name="nombre" type="text" class="form-control" value="">
-                <span class="validation" *ngIf="nombre.touched && nombre.errors?.required" style="color:red">sdd</span>
+                <span class="validation" *ngIf="nombre.touched && nombre.errors?.required" style="color:red">{{ msg.text[0].message }}</span>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label">UID:</label>
             <div class="col-12">
-                <input required #uid="ngModel" ngModel name="uid" type="text" class="form-control" value="">
+                <input required #uid="ngModel" ngModel name="uid" type="text" class="form-control" value="{{ UniqueId }}">
                 <span class="validation" *ngIf="uid.touched && uid.errors?.required" style="color:red">El campo es requerido</span>
             </div>
         </div>
