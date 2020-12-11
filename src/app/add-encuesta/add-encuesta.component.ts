@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { validationMessage } from '../models/validationMessage';
 import { UUID } from 'angular2-uuid';
-import { NgForOf } from '@angular/common';
+import swal from 'sweetalert';
 @Component({
   selector: 'app-add-encuesta',
   templateUrl: './add-encuesta.component.html',
@@ -27,6 +27,7 @@ export class AddEncuestaComponent implements OnInit {
   }
 
   generateUID() {
+    swal('', '', '');
     return UUID.UUID();
   }
 
