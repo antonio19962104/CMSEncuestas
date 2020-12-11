@@ -27,6 +27,9 @@ export class validationMessage{
       { type: 'required', message: 'Field is required' },
       { type: 'minlength', message: 'Field must be at least 5 characters long' },
       { type: 'maxlength', message: 'Field cannot be more than 25 characters long' }
+    ],
+    'number': [
+      { type: 'value', message: 'Value selected isn´t correct' }
     ]
   }
 }

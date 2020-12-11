@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { validationMessage } from '../models/validationMessage';
 import { UUID } from 'angular2-uuid';
+import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-add-encuesta',
   templateUrl: './add-encuesta.component.html',
@@ -15,7 +16,6 @@ export class AddEncuestaComponent implements OnInit {
   encuestaCreated = new Encuesta;
   newEncuesta: Encuesta;
   lastId: object;//frmTester.debug.cs
-  UniqueId: string = UUID.UUID();
   objVal = new validationMessage();
   msg = this.objVal.account_validation_messages;
 
@@ -23,15 +23,15 @@ export class AddEncuestaComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.generateUID();
+    
   }
 
   generateUID() {
-    this.UniqueId = UUID.UUID();
-    console.log(this.UniqueId);
+    return UUID.UUID();
   }
 
   addEncuesta(modelE: Encuesta) {
+    modelE.uid = this.generateUID();
     this.data.addEncuesta(modelE).subscribe(
       data => this.lastId = data
     );
