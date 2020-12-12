@@ -48,9 +48,9 @@ export class AddEncuestaComponent implements OnInit {
   addEncuesta(modelE: Encuesta) {
     modelE.uid = this.generateUID();
     this.data.addEncuesta(modelE).subscribe(
-      data => this.lastId = data
+      data => this.encuestaCreated = data
     );
-    this.router.navigate(['/detailEncuesta/', this.lastId])
+    this.router.navigate(['/detailEncuesta/', this.encuestaCreated.idEncuesta])
   }
 
 }
