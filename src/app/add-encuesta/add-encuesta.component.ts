@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Encuesta } from '../models/Encuesta';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { validationMessage } from '../models/validationMessage';
 import { UUID } from 'angular2-uuid';
@@ -27,7 +26,44 @@ export class AddEncuestaComponent implements OnInit {
   }
 
   generateUID() {
-    swal('', '', '');
+    swal(UUID.UUID(), '', 'info');
+
+    swal({
+      title: '',
+      text: 'Search for a movie. e.g. "La La Land".',
+      // content: "input",
+      content: {
+        element: 'input',
+        attributes: {  }
+      },
+      // button: {
+      //   text: "Search!",
+      //   closeModal: false,
+      // },
+      buttons: {
+        ['OK']: true,
+        ['Cancel']: true,
+        ['btn']: true
+      },
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+    }).then(function () {
+      
+    });
+
+    // swal(
+    //   title: '';
+    //   text: '';
+    //   icon: '';
+    //   buttons: ['cancel', 'confirm'];
+    //   content: {
+    //     element: ''
+    //   }
+    //   className: '';
+    //   closeOnClickOutside: false;
+    //   closeOnEsc: false;
+    //   dangerMode: true;
+    // );
     return UUID.UUID();
   }
 
