@@ -27,43 +27,21 @@ export class AddEncuestaComponent implements OnInit {
 
   generateUID() {
     swal(UUID.UUID(), '', 'info');
-
-    swal({
-      title: '',
-      text: 'Search for a movie. e.g. "La La Land".',
-      // content: "input",
-      content: {
-        element: 'input',
-        attributes: {  }
-      },
-      // button: {
-      //   text: "Search!",
-      //   closeModal: false,
-      // },
-      buttons: {
-        ['OK']: true,
-        ['Cancel']: true,
-        ['btn']: true
-      },
-      closeOnClickOutside: false,
-      closeOnEsc: false,
-    }).then(function () {
-      
-    });
-
-    // swal(
-    //   title: '';
-    //   text: '';
-    //   icon: '';
-    //   buttons: ['cancel', 'confirm'];
+    // swal({
+    //   title: '',
+    //   text: 'Search for a movie. e.g. "La La Land".',
     //   content: {
-    //     element: ''
-    //   }
-    //   className: '';
-    //   closeOnClickOutside: false;
-    //   closeOnEsc: false;
-    //   dangerMode: true;
-    // );
+    //     element: 'input',
+    //     attributes: {  }
+    //   },
+    //   buttons: {
+    //     ['OK']: true,
+    //     ['Cancel']: true,
+    //     ['btn']: true
+    //   },
+    //   closeOnClickOutside: false,
+    //   closeOnEsc: false,
+    // }).then(function () { });
     return UUID.UUID();
   }
 
