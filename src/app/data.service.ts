@@ -22,7 +22,7 @@ export class DataService {
 
   addEncuesta(data: Encuesta) {
     return this.http.post('http://localhost:40614/api/Encuesta', data)
-    .pipe(map((response: Encuesta) => response));
+      .pipe(map((response: Encuesta) => response));
   }
 
   updateEncuesta(data: Encuesta) {
@@ -52,6 +52,11 @@ export class DataService {
 
   deletePlantilla(data: Encuesta) {
     return this.http.put('', data);
+  }
+
+  getEstatus() {
+    return this.http.get('http://localhost:40614/api/Estatus')
+    .pipe(map((response: Object) => response));
   }
 
 }

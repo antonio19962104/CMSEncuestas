@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Encuesta } from '../models/Encuesta';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { validationMessage } from '../models/validationMessage';
 import { UUID } from 'angular2-uuid';
 import swal from 'sweetalert';
+
 @Component({
   selector: 'app-add-encuesta',
   templateUrl: './add-encuesta.component.html',
@@ -17,12 +18,14 @@ export class AddEncuestaComponent implements OnInit {
   lastId: object;//frmTester.debug.cs
   objVal = new validationMessage();
   msg = this.objVal.account_validation_messages;
-
+  listEstatus: Object;
   constructor(private data: DataService, private router: Router, private http: HttpClient) { }
   
 
   ngOnInit(): void {
-    
+    this.data.getEstatus().subscribe(
+      data => this.listEstatus = data
+    );
   }
 
   generateUID() {
@@ -48,7 +51,15 @@ export class AddEncuestaComponent implements OnInit {
   addEncuesta(modelE: Encuesta) {
     modelE.uid = this.generateUID();
     this.data.addEncuesta(modelE).subscribe(
-      data => this.encuestaCreated = data
+      data => this.encuestaCreated = data,
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          console.log('upload progress');
+        }
+        if (event.type === HttpEventType.Response) {
+          console.log('completed');
+        }
+      }
     );
     this.router.navigate(['/detailEncuesta/', this.encuestaCreated.idEncuesta])
   }

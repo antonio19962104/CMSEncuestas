@@ -30,6 +30,10 @@ export class validationMessage{
     ],
     'number': [
       { type: 'value', message: 'Value selected isn´t correct' }
+    ],
+    'fecha': [
+      { type: 'required', message: 'Field is required' },
+      { type: 'value', message: 'La fecha no de termino de aplicacion no puede ser menor a la de inicio' }
     ]
   }
 }

@@ -6,9 +6,9 @@
             <div class="col-12">
                 <input required #nombre="ngModel" ngModel name="nombre" type="text" class="form-control" value="" minlength="5" maxlength="10">
                 <div *ngIf="nombre.touched && nombre.errors">
-                    <span *ngIf="nombre.errors.required" class="validation"  style="color:red">{{ msg.text[0].message }}</span>
-                    <span *ngIf="nombre.errors.minlength" class="validation"  style="color:red">{{ msg.text[1].message }}</span>
-                    <span *ngIf="nombre.errors.maxlength" class="validation"  style="color:red">{{ msg.text[2].message }}</span>
+                    <span *ngIf="nombre.errors.required" class="validation">{{ msg.text[0].message }}</span>
+                    <span *ngIf="nombre.errors.minlength" class="validation">{{ msg.text[1].message }}</span>
+                    <span *ngIf="nombre.errors.maxlength" class="validation">{{ msg.text[2].message }}</span>
                 </div>
             </div>
         </div>
@@ -18,9 +18,10 @@
                 <!-- <input required #BD="ngModel" ngModel name="idBaseDeDatos" type="text" class="form-control" value=""> -->
                 <select required #BD="ngModel" ngModel name="idBaseDeDatos" class="form-control">
                     <option value="0">Select a option</option>
+                    <option *ngFor="let item of listEstatus" value="{{ item.idEstatus }}">{{ item.descripcion }}</option>
                 </select>
-                <div *ngIf="BD.touched && nombre.errors">
-                    <span *ngIf="BD.errors.required" class="validation"  style="color:red">{{ msg.text[0].message }}</span>
+                <div *ngIf="BD.touched && BD.errors">
+                    <span *ngIf="BD.errors.required" class="validation">{{ msg.text[0].message }}</span>
                 </div>
             </div>
         </div>
@@ -28,15 +29,19 @@
             <label class="control-label">Fecha inicio</label>
             <div class="col-12">
                 <input required #inicio="ngModel" ngModel name="fechaInicio" type="datetime-local" class="form-control" value="">
-                <!-- <input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00"> -->
-                <span class="validation" *ngIf="inicio.touched && inicio.errors?.required" style="color:red"></span>
+                <div *ngIf="inicio.touched && inicio.errors">
+                    <span class="validation" *ngIf="inicio.touched && inicio.errors?.required">{{ msg.fecha[0].message }}</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label">Fecha fin</label>
             <div class="col-12">
                 <input required #fin="ngModel" ngModel name="fechaFin" type="datetime-local" class="form-control" value="">
-                <span class="validation" *ngIf="fin.touched && fin.errors?.required" style="color:red"></span>
+                <div *ngIf="fin.touched && fin.errors">
+                    <span class="validation" *ngIf="fin.touched && fin.errors?.required">{{ msg.fecha[0].message }}</span>
+                </div>
+                <span class="validation" *ngIf="fin.touched && inicio.touched && fin.value <= inicio.value">{{ msg.fecha[1].message }}</span>
             </div>
         </div>
     </div>
