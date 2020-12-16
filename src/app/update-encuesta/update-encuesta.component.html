@@ -1,38 +1,51 @@
 <p>update-encuesta works!</p>
-<form>
+<form #frmAdd = "ngForm" (ngSubmit) = "postUpdate(frmAdd.value)">
     <div class="form-horizontal">
         <div class="form-group">
             <label class="control-label">Nombre:</label>
             <div class="col-12">
-                <input type="text" class="form-control" value="{{ encuestas.nombre }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">UID:</label>
-            <div class="col-12">
-                <input type="text" class="form-control" value="{{ encuestas.uid }}">
+                <input required #nombre="ngModel" ngModel name="encuestas.nombre" type="text" class="form-control" value="{{ encuestas.nombre }}" minlength="5" maxlength="10">
+                <div *ngIf="nombre.touched && nombre.errors">
+                    <span *ngIf="nombre.errors.required" class="validation">{{ msg.text[0].message }}</span>
+                    <span *ngIf="nombre.errors.minlength" class="validation">{{ msg.text[1].message }}</span>
+                    <span *ngIf="nombre.errors.maxlength" class="validation">{{ msg.text[2].message }}</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label">BD</label>
             <div class="col-12">
-                <input type="text" class="form-control" value="{{ encuestas.idBaseDeDatos }}">
+                <!-- <input required #BD="ngModel" ngModel name="idBaseDeDatos" type="text" class="form-control" value=""> -->
+                <select required #BD="ngModel" ngModel name="idBaseDeDatos" class="form-control">
+                    <option value="0">Select a option</option>
+                    <option *ngFor="let item of listEstatus" value="{{ item.idEstatus }}">{{ item.descripcion }}</option>
+                </select>
+                <div *ngIf="BD.touched && BD.errors">
+                    <span *ngIf="BD.errors.required" class="validation">{{ msg.text[0].message }}</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label">Fecha inicio</label>
             <div class="col-12">
-                <input type="datetime" class="form-control" value="{{ encuestas.fechaInicio }}">
+                <input required #inicio="ngModel" ngModel name="fechaInicio" type="datetime-local" class="form-control" value="{{ encuestas.fechaInicio }}">
+                <div *ngIf="inicio.touched && inicio.errors">
+                    <span class="validation" *ngIf="inicio.touched && inicio.errors?.required">{{ msg.fecha[0].message }}</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label">Fecha fin</label>
             <div class="col-12">
-                <input type="datetime" class="form-control" value="{{ encuestas.fechaFin }}">
+                <input required #fin="ngModel" ngModel name="fechaFin" type="datetime-local" class="form-control" value="{{ encuestas.fechaFin }}">
+                <div *ngIf="fin.touched && fin.errors">
+                    <span class="validation" *ngIf="fin.touched && fin.errors?.required">{{ msg.fecha[0].message }}</span>
+                </div>
+                <span class="validation" *ngIf="fin.touched && inicio.touched && fin.value <= inicio.value">{{ msg.fecha[1].message }}</span>
             </div>
         </div>
     </div>
     <div class="col-offset-2">
-        <input type="submit" class="btn btn-success" value="Enviar">
+        <input [disabled]="frmAdd.invalid" type="submit" class="btn btn-success" value="Enviar">
     </div>
 </form>

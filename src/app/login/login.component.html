@@ -1,0 +1,29 @@
+<p>login works!</p>
+<p>add-encuesta works!</p>
+<form #frmAdd = "ngForm" (ngSubmit) = "login(frmAdd.value)">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label">Usuario:</label>
+            <div class="col-12">
+                <input required #username="ngModel" ngModel name="username" type="text" class="form-control" value="" minlength="5" maxlength="50">
+                <div *ngIf="username.touched && username.errors">
+                    <span *ngIf="username.errors.required" class="validation">{{ msg.text[0].message }}</span>
+                    <span *ngIf="username.errors.minlength" class="validation">{{ msg.text[1].message }}</span>
+                    <span *ngIf="username.errors.maxlength" class="validation">{{ msg.text[2].message }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Contraseña</label>
+            <div class="col-12">
+                <input required #password="ngModel" ngModel name="password" type="password" class="form-control" value="" minlength="5" maxlength="20">
+                <div *ngIf="password.touched && password.errors">
+                    <span *ngIf="password.errors.required" class="validation">{{ msg.text[0].message }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-offset-2">
+        <input [disabled]="frmAdd.invalid" type="submit" class="btn btn-success" value="Ingresar">
+    </div>
+</form>

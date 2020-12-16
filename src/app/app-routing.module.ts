@@ -5,10 +5,15 @@ import { GetAllEncuestaComponent } from './get-all-encuesta/get-all-encuesta.com
 import { DetailEncuestaComponent } from './detail-encuesta/detail-encuesta.component';
 import { AddEncuestaComponent } from './add-encuesta/add-encuesta.component';
 import { UpdateEncuestaComponent } from './update-encuesta/update-encuesta.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'dashboard',
     component: DashBoardComponent
   },
   {
