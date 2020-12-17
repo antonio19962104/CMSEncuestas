@@ -20,9 +20,11 @@ export class LoginComponent implements OnInit {
   login(data: Usuario) {
     this.data.login(data).subscribe(
       data => localStorage.setItem('tokenValidation', data.token),// = data,
-      error => alert('error')
+      error => alert('error' + error)
     );
-    this.router.navigate(['/dashboard']);
+    if (localStorage.getItem('tokenValidation') != null && localStorage.getItem('tokenValidation') != '') {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 }
